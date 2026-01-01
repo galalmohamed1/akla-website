@@ -23,6 +23,7 @@ function getRecipe(Value) {
 }
 
 function displayData() {
+  
   let cartona = "";
   for (let i = 0; i < recipe.length; i++) {
     let titel = recipe[i].title;

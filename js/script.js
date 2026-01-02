@@ -1,11 +1,22 @@
-let Value;
-let btn = document.querySelector(".btton");
+// let Value;
+let btn = document.querySelector(".btn");
+let popout = document.querySelector(".light-container");
+let img = document.querySelector(".light-container .box");
+let select=document.getElementById("s");
+let close = document.querySelector(".end-0");
 
-
-btn.addEventListener("click", function () {
-  Value = document.querySelector(".form-control").value;
-  getPizza(Value);
+select.addEventListener("change", function () {
+  let text = select.options[select.selectedIndex].text;
+  getPizza(text);
 });
+
+close.addEventListener("click", function () {
+  closedd();
+});
+
+function closedd() {
+  popout.classList.add("d-none");
+}
 
 async function getPizza(value) {
   let response = await fetch(`https://forkify-api.herokuapp.com/api/search?q=${value}`);
@@ -27,12 +38,27 @@ function displayData(AllRecipe) {
                                 <h4 class="card-title">${AllRecipe[i].title
                                   .split(" ", 2)
                                   .join(" ")}</h4>
-                                <a target="_blank" class="btn btn-primary w-100" href="${
-                                  AllRecipe[i].source_url
-                                }">text</a>
+                                <button target="_blank" class="btn btn-primary w-100" onclick="showdata(${AllRecipe[i].recipe_id})">text</button>
                             </div>
                         </div>
                     </div>`;
   }
   document.getElementById("rowData").innerHTML = cartona;
+}
+
+
+
+async function showdata(id){
+  popout.classList.remove("d-none");
+  let response = await fetch(`https://forkify-api.herokuapp.com/api/get?rId=${id}`);
+  let data = await response.json();
+  let alldata = data.recipe;
+  let  cartona =`
+                      <img class="card-img-top rounded-4 w-100" src="${alldata.image_url}" alt="Title">
+                        <div class="card-body">
+                            <h4 class="card-title mb-4">${alldata.title}</h4>
+                            <a target="_blank" class="btn btn-primary w-100" href="${alldata.source_url}">Details</a>
+                        </div>
+                    `;
+  show.innerHTML=cartona;                  
 }

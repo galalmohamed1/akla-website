@@ -12,13 +12,37 @@
         <section class="p-5">
             <h1 class="mb-3 d-flex align-items-center justify-content-center">Search of the food</h1>
             <div class="container-fluid">
-                <div class="d-flex w-50 mb-4 mx-auto">
-                    <input type="text" class="form-control me-2">
-                    <button class="btn btn-primary btton">Search</button>
-                </div>
-                <div class="row g-4" id="rowData">
-                    
-                </div>
+                <!-- <div class="d-flex w-50 mb-4 mx-auto"> -->
+                <!-- <input type="text" class="form-control me-2">
+                    <button class="btn btn-primary btton">Search</button> -->
+                <select class="form-select w-25 mx-auto my-2" id="s">
+                    <option>carrot</option>
+                    <option>broccoli</option>
+                    <option>asparagus</option>
+                    <option>cauliflower</option>
+                    <option>corn</option>
+                    <option>pizza</option>
+                    <option>pasta</option>
+                    <option>cucumber</option>
+                    <option>green pepper</option>
+                </select>
+                <!-- </div> -->
+                <div class="row g-4" id="rowData"></div>
+                <section class="light-container position-fixed d-flex align-items-center justify-content-center d-none" >
+                    <div class="box position-relative w-50 rounded-4 card">
+                        <svg
+                            id="closed"
+                            class=" pointer w-7 m-2 position-absolute end-0 "
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 640 640"
+                        >
+                            <path d="M320 576C461.4 576 576 461.4 576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576zM231 231C240.4 221.6 255.6 221.6 264.9 231L319.9 286L374.9 231C384.3 221.6 399.5 221.6 408.8 231C418.1 240.4 418.2 255.6 408.8 264.9L353.8 319.9L408.8 374.9C418.2 384.3 418.2 399.5 408.8 408.8C399.4 418.1 384.2 418.2 374.9 408.8L319.9 353.8L264.9 408.8C255.5 418.2 240.3 418.2 231 408.8C221.7 399.4 221.6 384.2 231 374.9L286 319.9L231 264.9C221.6 255.5 221.6 240.3 231 231z"/>
+                        </svg>
+                        <div id="show">
+
+                        </div>
+                    </div> 
+                </section>
             </div>
         </section>
         <script src="js/bootstrap.bundle.min.js"></script>

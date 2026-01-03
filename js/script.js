@@ -4,6 +4,7 @@ let popout = document.querySelector(".light-container");
 let img = document.querySelector(".light-container .box");
 let select=document.getElementById("s");
 let close = document.querySelector(".end-0");
+let loading =document.querySelector(".loading");
 
 select.addEventListener("change", function () {
   let text = select.options[select.selectedIndex].text;
@@ -19,11 +20,13 @@ function closedd() {
 }
 
 async function getPizza(value) {
+  loading.classList.remove("d-none");
   let response = await fetch(`https://forkify-api.herokuapp.com/api/search?q=${value}`);
   if(response.ok){
     let data = await response.json();
     let AllRecipe = data.recipes;
     displayData(AllRecipe);
+    loading.classList.add("d-none");
   }
 }
 function displayData(AllRecipe) {
@@ -50,6 +53,7 @@ function displayData(AllRecipe) {
 
 async function showdata(id){
   popout.classList.remove("d-none");
+  loading.classList.remove("d-none");
   let response = await fetch(`https://forkify-api.herokuapp.com/api/get?rId=${id}`);
   let data = await response.json();
   let alldata = data.recipe;
@@ -60,5 +64,6 @@ async function showdata(id){
                             <a target="_blank" class="btn btn-primary w-100" href="${alldata.source_url}">Details</a>
                         </div>
                     `;
-  show.innerHTML=cartona;                  
+  show.innerHTML=cartona; 
+  loading.classList.add("d-none");                 
 }
